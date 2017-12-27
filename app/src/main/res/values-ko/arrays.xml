@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="currency_entries">
+        <item>비트코인 (BTC)</item>
+        <item>이더리움 (ETH)</item>
+        <item>대시 (DASH)</item>
+        <item>라이트코인 (LTC)</item>
+        <item>이더리움 클래식 (ETC)</item>
+        <item>리플 (XRP)</item>
+        <item>비트코인 캐시 (BCH)</item>
+        <item>모네로 (XMR)</item>
+        <item>제트캐시 (ZEC)</item>
+        <item>퀀텀 (QTUM)</item>
+        <item>비트코인 골드 (BTG)</item>
+    </string-array>
+</resources>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="currency_btc">비트코인</string>
+    <string name="currency_eth">이더리움</string>
+    <string name="currency_dash">대시</string>
+    <string name="currency_ltc">라이트코인</string>
+    <string name="currency_etc">이더리움 클래식</string>
+    <string name="currency_xrp">리플</string>
+    <string name="currency_bch">비트코인 캐시</string>
+    <string name="currency_xmr">모네로</string>
+    <string name="currency_zec">제트캐시</string>
+    <string name="currency_qtum">퀀텀</string>
+    <string name="currency_btg">비트코인 골드</string>
+    <string name="title_activity_ticker">코인 시세</string>
+    <string name="title_activity_transaction">코인 거래</string>
+    <string name="action_buy">구매</string>
+    <string name="action_sell">판매</string>
+    <string name="currency_format">#,### 원</string>
+    <string name="current_price_desc">현재 가격</string>
+    <string name="app_name">비트코인 시뮬레이터</string>
+    <string name="coin_amount">코인 수량</string>
+    <string name="action_history">기록</string>
+    <string name="title_activity_mywallet">내 지갑</string>
+    <string name="current_budget">현재 예산</string>
+    <string name="coin_count">현재 코인 수량</string>
+</resources>

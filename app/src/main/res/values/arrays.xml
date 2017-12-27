@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="currency_entries">
+        <item>Bitcoin (BTC)</item>
+        <item>Ethereum (ETH)</item>
+        <item>Dash (DASH)</item>
+        <item>Litecoin (LTC)</item>
+        <item>Ethereum Classic (ETC)</item>
+        <item>Ripple (XRP)</item>
+        <item>Bitcoin Cash (BCH)</item>
+        <item>Monero (XMR)</item>
+        <item>Zcash (ZEC)</item>
+        <item>Qtum (QTUM)</item>
+        <item>Bitcoin Gold (BTG)</item>
+    </string-array>
+
+    <string-array name="currency_types">
+        <item>BTC</item>
+        <item>ETH</item>
+        <item>DASH</item>
+        <item>LTC</item>
+        <item>ETC</item>
+        <item>XRP</item>
+        <item>BCH</item>
+        <item>XMR</item>
+        <item>ZEC</item>
+        <item>QTUM</item>
+        <item>BTG</item>
+    </string-array>
+</resources>
