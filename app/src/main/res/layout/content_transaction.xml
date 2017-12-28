@@ -7,16 +7,13 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    android:paddingEnd="@dimen/keyline"
-    android:paddingStart="@dimen/keyline"
+    android:padding="@dimen/keyline"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_transaction">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/keyline_small"
-        android:paddingTop="@dimen/keyline_small">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -34,7 +31,7 @@
                 android:id="@+id/currency_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/keyline_mini"
+                android:layout_marginTop="@dimen/keyline_small"
                 android:textAppearance="@style/TextAppearance.Primary"
                 tools:text="1,000,000 KRW" />
 
@@ -49,7 +46,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/keyline_small"
+                android:layout_marginTop="@dimen/keyline"
                 android:text="@string/current_coin_count"
                 android:textAppearance="@style/TextAppearance.Secondary" />
 
@@ -57,7 +54,7 @@
                 android:id="@+id/coin_count"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/keyline_mini"
+                android:layout_marginTop="@dimen/keyline_small"
                 android:text="0"
                 android:textAppearance="@style/TextAppearance.Primary"
                 tools:text="0.001" />
@@ -70,13 +67,14 @@
             android:layout_margin="@dimen/keyline_small"
             android:background="@color/dividerColor" />
 
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/current_budget_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/current_budget"
@@ -88,9 +86,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/keyline_small"
                 android:textAppearance="@style/TextAppearance.Primary"
+                app:layout_constraintTop_toBottomOf="@id/current_budget_desc"
                 tools:text="1,000,000 KRW" />
 
-        </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/keyline_small"
+                android:text="@string/available_coin_count"
+                android:textAppearance="@style/TextAppearance.Secondary"
+                app:layout_constraintBottom_toTopOf="@id/available_coin_count" />
+
+            <TextView
+                android:id="@+id/available_coin_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textAppearance="@style/TextAppearance.Primary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="0.001" />
+
+        </android.support.constraint.ConstraintLayout>
 
     </LinearLayout>
 

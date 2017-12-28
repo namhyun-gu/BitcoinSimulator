@@ -14,13 +14,10 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import dev.namhyun.bitcoinsimulator.R
-import dev.namhyun.bitcoinsimulator.data.local.model.PurchaseCurrency
-import dev.namhyun.bitcoinsimulator.data.local.model.Wallet
 import dev.namhyun.bitcoinsimulator.extensions.getChangeRate
 import dev.namhyun.bitcoinsimulator.extensions.toCurrencyString
 import dev.namhyun.bitcoinsimulator.extensions.vaildInput
 import io.reactivex.disposables.CompositeDisposable
-import io.realm.ObjectChangeSet
 import kotlinx.android.synthetic.main.activity_transaction.*
 import kotlinx.android.synthetic.main.content_transaction.*
 import kotlin.math.roundToLong
@@ -81,52 +78,33 @@ class TransactionActivity : AppCompatActivity(),
             override fun afterTextChanged(s: Editable?) {
             }
         })
-
-        viewModel.getWallet().addChangeListener { newWallet: Wallet?, changeSet: ObjectChangeSet? ->
-            if (changeSet?.isDeleted!!) return@addChangeListener
-            updateBudget(newWallet!!)
-        }
-
-        updateCoinCount(viewModel.getPurchaseCurrency(currentCurrency))
     }
 
     override fun onResume() {
         super.onResume()
-        updateTicker()
-        updateBudget(viewModel.getWallet())
+        startTicker()
+        updateBudget()
+        updateCoinCount()
     }
 
     override fun onPause() {
         super.onPause()
-        compositeDisposable.clear()
+        stopTicker()
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         currentCurrency = currencyList[position]
-        compositeDisposable.clear()
-        updateTicker()
-        updateCoinCount(viewModel.getPurchaseCurrency(currentCurrency))
+        stopTicker()
+        startTicker()
+        updateCoinCount()
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
         // No-op
     }
 
-    private fun updateBudget(wallet: Wallet) {
-        current_budget.text = wallet.budget.toCurrencyString(this)
-    }
-
     @SuppressLint("SetTextI18n")
-    private fun updateCoinCount(purchaseCurrency: PurchaseCurrency?) {
-        if (purchaseCurrency != null) {
-            coin_count.text = purchaseCurrency.count.toString()
-        } else {
-            coin_count.text = "0"
-        }
-    }
-
-    @SuppressLint("SetTextI18n")
-    private fun updateTicker() {
+    private fun startTicker() {
         val disposable = viewModel.updatePrice(currentCurrency).subscribe({
             val (current, opening) = it.data
             val diffPrice = current - opening
@@ -137,10 +115,29 @@ class TransactionActivity : AppCompatActivity(),
                     "${diffPrice.toCurrencyString(this)} (${"%.2f".format(it.data.getChangeRate())} %)"
 
             calculatePrice()
+            calculateAvailableCoin()
         }, {
             Log.e(TAG, "Can't update currency price", it)
         })
         compositeDisposable.add(disposable)
+    }
+
+    private fun stopTicker() {
+        compositeDisposable.clear()
+    }
+
+    private fun updateBudget() {
+        current_budget.text = viewModel.getWallet().budget.toCurrencyString(this)
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun updateCoinCount() {
+        val purchaseCurrency = viewModel.getPurchaseCurrency(currentCurrency)
+        if (purchaseCurrency != null) {
+            coin_count.text = purchaseCurrency.count.toString()
+        } else {
+            coin_count.text = "0"
+        }
     }
 
     private fun calculatePrice() {
@@ -151,11 +148,20 @@ class TransactionActivity : AppCompatActivity(),
         }
     }
 
+    @SuppressLint("SetTextI18n")
+    private fun calculateAvailableCoin() {
+        val wallet = viewModel.getWallet()
+        if (wallet.budget != 0L) {
+            val availableCoin = wallet.budget.toDouble() / currentPrice
+            available_coin_count.text = "%.5f".format(availableCoin)
+        }
+    }
+
     private fun processTransaction(status: TransactionStatus) {
         when (status) {
             TransactionStatus.SUCCESS -> {
-                updateBudget(viewModel.getWallet())
-                updateCoinCount(viewModel.getPurchaseCurrency(currentCurrency))
+                updateBudget()
+                updateCoinCount()
                 Snackbar.make(content_frame, "Transaction success", Snackbar.LENGTH_SHORT).show()
             }
             TransactionStatus.OVERSELLING -> {

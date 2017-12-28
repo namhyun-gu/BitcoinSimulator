@@ -23,4 +23,5 @@
     <string name="current_budget">현재 예산</string>
     <string name="current_coin_count">현재 코인 수량</string>
     <string name="krw_price_format">#,### 원</string>
+    <string name="available_coin_count">구매가능한 코인 수량</string>
 </resources>

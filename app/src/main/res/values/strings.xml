@@ -21,5 +21,6 @@
     <string name="current_price">Current Price</string>
     <string name="current_coin_count">Current coin count</string>
     <string name="current_budget">Current budget</string>
-    <string name="krw_price_format" translatable="false">#,### KRW</string>
+    <string name="krw_price_format">#,### KRW</string>
+    <string name="available_coin_count">Available coin count</string>
 </resources>
