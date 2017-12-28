@@ -7,4 +7,4 @@ import dev.namhyun.bitcoinsimulator.R
 import java.text.DecimalFormat
 
 fun Number.toCurrencyString(context: Context): String
-        = DecimalFormat(context.getString(R.string.currency_format)).format(this)
+        = DecimalFormat(context.getString(R.string.krw_price_format)).format(this)

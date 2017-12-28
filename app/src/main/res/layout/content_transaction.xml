@@ -27,7 +27,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/current_price_desc"
+                android:text="@string/current_price"
                 android:textAppearance="@style/TextAppearance.Secondary" />
 
             <TextView
@@ -50,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/keyline_small"
-                android:text="@string/coin_count"
+                android:text="@string/current_coin_count"
                 android:textAppearance="@style/TextAppearance.Secondary" />
 
             <TextView
@@ -103,7 +103,7 @@
             android:id="@+id/input_coin_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/coin_amount"
+            android:hint="@string/coin_count"
             android:inputType="numberDecimal" />
 
     </android.support.design.widget.TextInputLayout>

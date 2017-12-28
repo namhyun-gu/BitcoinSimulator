@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">BitcoinSimulator</string>
+    <string name="title_activity_ticker">Bitcoin Ticker</string>
+    <string name="title_activity_mywallet">My Wallet</string>
+    <string name="title_activity_transaction">Transaction</string>
     <string name="currency_btc">Bitcoin</string>
     <string name="currency_eth">Ethereum</string>
     <string name="currency_dash">Dash</string>
@@ -11,15 +14,12 @@
     <string name="currency_zec">Zcash</string>
     <string name="currency_qtum">Qtum</string>
     <string name="currency_btg">Bitcoin Gold</string>
-    <string name="title_activity_ticker">Bitcoin Ticker</string>
-    <string name="title_activity_transaction">Transaction</string>
     <string name="action_buy">buy</string>
     <string name="action_sell">sell</string>
-    <string name="current_price_desc">Current Price</string>
-    <string name="currency_format" translatable="false">#,### KRW</string>
-    <string name="coin_amount">Coin amount</string>
-    <string name="action_history">History</string>
-    <string name="title_activity_mywallet">My Wallet</string>
+    <string name="action_wallet">My wallet</string>
+    <string name="coin_count">Coin count</string>
+    <string name="current_price">Current Price</string>
+    <string name="current_coin_count">Current coin count</string>
     <string name="current_budget">Current budget</string>
-    <string name="coin_count">Current coin count</string>
+    <string name="krw_price_format" translatable="false">#,### KRW</string>
 </resources>
